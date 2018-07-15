@@ -18,12 +18,12 @@ public static void main(String[] args) {
 	String url = "https://www.dice.com";
 	driver.get(url);
 	String actualTitle = driver.getTitle();
-	String expectedTitle = "JobSearch for Technology Professionals | Dice.com";
+	String expectedTitle = "Job Search for Technology Professionals | Dice.com";
 	if(actualTitle.equals(expectedTitle)){
 		System.out.println("Step PASS. Dice homepage successfully loaded.");
 	} else {
 	System.out.println("Step FAIL. Dice homepage did not loaded successfully.");
-	//throw new RuntimeException("Step FAIL. Dice homepage did not loaded successfully.");
+	throw new RuntimeException("Step FAIL. Dice homepage did not loaded successfully."); //will not continue testing, in fail case.
 	}
 	String keyword = "JavaScript Developer";
 	driver.findElement(By.id("search-field-keyword")).clear();
@@ -44,7 +44,8 @@ public static void main(String[] args) {
 		System.out.println("Step FAIL. Keyword: " + keyword + " search returned - " + CountResult + " results in " + location );
 	}	
 	driver.close();
-	System.out.println("Test complete");
+	System.out.println("Test completed: " + LocalDateTime.now());
+	
 
 }
 }
